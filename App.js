@@ -5,17 +5,24 @@ export default function App() {
   const [valor1, setValor1] = useState();
   const [valor2, setValor2] = useState();
   const [resultado, setResultado] = useState(0);
+  const [mensagem, Mensagem] = useState();
 
-  function resultad(){
-    setResultado(parseFloat(valor1) / parseFloat(valor2));
+  function dividir(){
+    let diferenca = (parseFloat(valor1) / parseFloat(valor2));
+    setResultado(parseFloat(valor1) / parseFloat(valor2)); 
+
+    if(diferenca <= 0.7){
+      Mensagem("Abasteça com álcool");
+    }
+    else 
+    {
+      Mensagem("Abasteça com gasolina");
+    }
   }
-  if(resultad <= 0,7){
-    <Text style={styles.texto}>Abasteça com Álcool</Text>
-  }
-  
+
   return (
     <View style={styles.container}>
-      <Text style={styles.texto}>Calculater</Text>
+      <Text style={styles.texto}>Gasolina X Álcool</Text>
       <p>
 
       </p>
@@ -46,7 +53,7 @@ export default function App() {
       <View style={styles.bloco}>
         <TouchableOpacity 
           style={styles.botao1}
-          onPress={resultad}
+          onPress={dividir}
         >
             <Text style={styles.textoBotao1}>Calcular</Text>
         </TouchableOpacity>
@@ -55,6 +62,7 @@ export default function App() {
      
       <View style={styles.bloco}>
         <Text style={styles.textoBloco}>Resultado: {resultado}</Text>
+        <Text style={styles.textoBloco}>{mensagem}</Text>
       </View>
     </View>
   );
